@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  nodejs:
+    image: oso
+    container_name: ecomm-container-2
+    build: .
+    ports:
+      - "3300:3000"
+    environment:
+      - CONNECTION_URL_LOCAL=mongodb+srv://oi5921435:TTz1OrRfCLNQPiNs@cluster0.9cj84p1.mongodb.net/saraha
+
+  mongodb:
+    image: oso
+    container_name: mongodb-container-1
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+
+volumes:
+  mongodb-data:
+    driver: local
